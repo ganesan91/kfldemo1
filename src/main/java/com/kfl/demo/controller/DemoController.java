@@ -23,7 +23,7 @@ public class DemoController {
 
     // Create a new User
     @PostMapping("/createUser")
-    public Users createUser(@Valid @RequestBody Users users) {
+    public Users createUser(@RequestBody Users users) {
         return demoRepository.save(users);
     }
 }
