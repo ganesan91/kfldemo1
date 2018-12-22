@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -14,8 +15,15 @@ public class DemoController {
     @Autowired
     DemoRepository demoRepository;
 
-    @GetMapping("/notes")
-    public List<Users> getAllNotes() {
+    // Get All Users
+    @GetMapping("/getAllUsers")
+    public List<Users> getAllUsers() {
         return demoRepository.findAll();
+    }
+
+    // Create a new User
+    @PostMapping("/createUser")
+    public Users createUser(@Valid @RequestBody Users users) {
+        return demoRepository.save(users);
     }
 }
